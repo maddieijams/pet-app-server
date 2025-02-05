@@ -1,6 +1,4 @@
-# write a dockerfile for this project
 FROM openjdk:21-jdk-slim
-ARG JAR_FILE=target/*.jar
-COPY ${JAR_FILE} app.jar
-EXPOSE 8080
-ENTRYPOINT ["java","-jar","serving-web-content.jar"]
+VOLUME /tmp
+COPY target/serving-web-content-0.0.1-SNAPSHOT.jar serving-web-content.jar
+ENTRYPOINT ["java","-jar","/serving-web-content.jar"]
