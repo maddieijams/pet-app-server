@@ -15,6 +15,17 @@ public class PetController {
 
     @GetMapping
     public List<Pet> getPets() {
-        return petService.getPets();
+        try {
+            List<Tutorial> pets = new ArrayList<Pet>();
+
+            if (pets.isEmpty()) {
+                return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+            }
+
+            return new ResponseEntity<>(pets, HttpStatus.OK);
+        } catch (Exception e) {
+            return new ResponseEntity<>(null, HttpStatus.INTERNAL_SERVER_ERROR);
+        }
+//        return petService.getPets();
     }
 }
